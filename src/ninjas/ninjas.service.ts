@@ -43,10 +43,10 @@ export class NinjasService {
     updateNinja(id: number, updateNinjaDto: UpdateNinjaDto) {
         this.ninjas = this.ninjas.map((ninja) => {
             if(ninja.id === id) {
-                return { ...ninja, updateNinjaDto}
+                return { ...ninja, ...updateNinjaDto}
             }
             return ninja
-        })
+        });
         return this.getNinja(id);
     }
 
@@ -54,7 +54,7 @@ export class NinjasService {
 
     removeNinja(id: number) {
         const toBeRemoved = this.getNinja(id);
-        
+
         this.ninjas = this.ninjas.filter((ninja) => ninja.id !== id);
         return toBeRemoved;
     }
